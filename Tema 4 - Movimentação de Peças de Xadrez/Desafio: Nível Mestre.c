@@ -1,34 +1,64 @@
 #include <stdio.h>
 
-void Torre (int C){
-    if(C > 0){
-        printf("Direita\n", C);
-        Torre(C - 1);
+void moverTorre(int casas) {
+    if (casas <= 0) return;
+    printf("Direita\n");
+    moverTorre(casas - 1);
+}
 
-    }
-void Bispo(int C) {
-    if ( <= 0) return;  // caso base
-
-    // loop externo: movimento vertical
+void moverBispo(int casas) {
+    if (casas <= 0) return;
     for (int v = 0; v < 1; v++) {
-        // loop interno: movimento horizontal
-        for (int h = 0; h < 1; h++) {
-            printf("Cima Direita\n");
+    for (int h = 0; h < 1; h++) {
+            printf("Cima, Direita\n");
         }
     }
 
-    moverBispo(casas - 1);   // chamada recursiva
+    moverBispo(casas - 1);
 }
 
-int main () {
-    int Casas = 5;
+void moverRainha(int casas) {
+    if (casas <= 0) return;
+    printf("Esquerda\n");
+    moverRainha(casas - 1);
+}
+
+void moverCavalo() {
+    int movimentosCima = 2;   
+    int movimentosDireita = 1;   
+
+    printf("*** Movimento do Cavalo ***\n");
+
+    for (int i = 0; i < movimentosCima; i++) {
+        printf("Cima\n");
+        if (i == 0) {
+            continue;
+        }
+       
+    
+    for (int j = 0; j < 2; j++) {
+        if (j >= movimentosDireita) {
+            break;
+        }
+        printf("Direita\n");
+    }
+}
+}
+
+int main() {
     printf("*** Movimento da Torre ***\n");
-    Torre (Casas);
-    return 0;
+    moverTorre(5); 
+    printf("\n");
 
-    int Casas2 = 5;
     printf("*** Movimento do Bispo ***\n");
-    Bispo (Casas2);
-    return 0;
+    moverBispo(5);
+    printf("\n");
 
+    printf("*** Movimento da Rainha ***\n");
+    moverRainha(8);
+    printf("\n");
+
+    moverCavalo(); 
+
+    return 0;
 }
